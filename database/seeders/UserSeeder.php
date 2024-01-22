@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Ramsey\Uuid\Uuid;
@@ -24,9 +25,10 @@ class UserSeeder extends Seeder
             'profile' => 'admin.png',
             'deskripsi' => 'Admin',
             'alamat' => 'Jl. Jalan',
+            'status' => 'active',
 
         ]);
-        User::create([
+        $owner = User::create([
             'name' => 'owner',
             'email' => 'owner2@example.com',
             'password' => bcrypt('owner'),
@@ -34,8 +36,14 @@ class UserSeeder extends Seeder
             'phone' => '081234567890',
             'profile' => 'owner.png',
             'alamat' => 'Jl. Jalan',
-            'deskripsi' => 'owner'
+            'deskripsi' => 'owner',
+            'status' => 'active',
         ]);
-       
+        $owner->shop()->create([
+            'jenis_id' => 1,
+            'nama_toko' => "Satu Toko",
+            'alamat' => "Alamat Toko",
+            'tahun_berdiri' => "2023",
+        ]);
     }
 }

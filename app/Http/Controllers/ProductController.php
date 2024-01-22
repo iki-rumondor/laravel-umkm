@@ -59,10 +59,10 @@ class ProductController extends Controller
         $newName = $file->hashName();
         $file->move($this->path,$newName);
         $user_shop = Shop::where("user_id", Auth::user()->id)->get()[0];
-        $send = Product::create([
+        $data = [
             'uuid' => Str::uuid()->toString(),
             'user_id' => Auth::user()->id,
-            'jenis_umkm_id' => $user_shop->id,
+            'jenis_umkm_id' => $user_shop->jenis_id,
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'category_id' => $request->category_id,
@@ -72,7 +72,8 @@ class ProductController extends Controller
             'status' => $request->status,
             'image' => $newName,
             'phone' => ""
-        ]);
+        ];
+        $send = Product::create($data);
         if ($send) {
             return back()->with('success', 'Data berhasil ditambahkan');
         }else{
