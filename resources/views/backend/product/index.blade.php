@@ -35,8 +35,10 @@
                                                 <form action="{{ Route('product.destroy', $pr->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
+                                                    @if (Auth::user()->role != 'admin')
                                                     <a href="{{ Route('product.edit', $pr->uuid) }}"
                                                         class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                                    @endif
                                                     <button
                                                         onclick="return confirm('apakah anda yakin ingin mengahpus product ini?')"
                                                         class="btn btn-danger"><i class="fa fa-trash"

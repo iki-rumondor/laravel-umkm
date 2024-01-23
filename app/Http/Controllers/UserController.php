@@ -160,6 +160,7 @@ class UserController extends Controller
             File::delete($this->gambarProduct . $product->image);
             $product->delete();
         }
+        $data->shop->delete();
         $data->delete();
         if ($data) {
             return redirect()->route('user.index')->with('success', 'Berhasil hapus');

@@ -53,6 +53,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'diskon' => 'required|numeric',
             'description' => 'required',
+            'category_id' => 'required',
             'status' => 'required',
         ]);
         $file = $request->file('image');
@@ -126,7 +127,7 @@ class ProductController extends Controller
                 'status' => 'required',
                 'image' => 'required|image|mimes:webp,png,jpg|max:2048'
             ]);
-            if (File::hash($this->path . $data->image)) {
+            if (File::exists($this->path . $data->image) && File::hash($this->path . $data->image)) {
                 File::delete($this->path . $data->image);
             }
             $file = $request->file('image');
@@ -141,7 +142,7 @@ class ProductController extends Controller
                 'description' => $request->description,
                 'status' => $request->status,
                 'image' => $newName,
-                'phone' => $request->phone,
+                'phone' => "",
             ]);
             if($data)
             {
@@ -176,7 +177,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $data = Product::find($id);
-        if (File::hash($this->path . $data->image)) {
+        if (File::exists($this->path . $data->image) && File::hash($this->path . $data->image)) {
             File::delete($this->path . $data->image);
         }
         $data->delete();

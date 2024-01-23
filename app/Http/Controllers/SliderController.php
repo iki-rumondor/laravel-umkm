@@ -98,10 +98,9 @@ class SliderController extends Controller
         if ($request->hasFile('image')) {
             $request->validate([
                 'judul' => 'required',
-                'link' => 'required',
                 'image' => 'required|image|mimes:webp,png,jpg|max:2048'
             ]);
-            if (File::hash($this->path . $data->image)) {
+            if (File::exists($this->path . $data->image) && File::hash($this->path . $data->image)) {
                 File::delete($this->path . $data->image);
             }
             $file = $request->file('image');
@@ -109,7 +108,7 @@ class SliderController extends Controller
             $file->move(public_path($this->path), $newName);
             $data->update([
                 'judul' => $request->judul,
-                'link' => $request->link,
+                'link' => "-",
                 'image' => $newName
             ]);
             if($data)
@@ -141,7 +140,7 @@ class SliderController extends Controller
     public function destroy($id)
     {
         $data = Slider::find($id);
-        if (File::hash($this->path . $data->image)) {
+        if (File::exists($this->path . $data->image) && File::hash($this->path . $data->image)) {
             File::delete($this->path . $data->image);
         }
         $data->delete();

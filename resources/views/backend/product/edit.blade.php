@@ -46,12 +46,11 @@
                                     <textarea name="description" id="description" cols="30" rows="10" class="form-control"
                                         placeholder="Deskripsi Produk">{{$data->description}}</textarea>
                                 </div>
-                                <div class="form-group mb-3">
+                                {{-- <div class="form-group mb-3">
                                     <label class="fw-bold">Telephone</label>
                                     <input type="text" placeholder="Telephone" value="{{$data->phone}}" name="phone" class="form-control">
-                                </div>
-                                
-                                
+                                </div> --}}
+
                                 <div class="row">
                                     <div class="form-group mb-3 col-lg-6">
                                         <label class="fw-bold">Status Produk</label>

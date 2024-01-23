@@ -22,10 +22,10 @@
                                         <label class="fw-bold">Nama Slider</label>
                                         <input type="text" name="judul" value="{{$data->judul}}" placeholder="Slider" class="form-control">
                                     </div>
-                                    <div class="form-group mb-3">
+                                    <!-- <div class="form-group mb-3">
                                         <label class="fw-bold">Link</label>
                                         <input type="text" value="{{$data->link}}" name="link" placeholder="Link" class="form-control">
-                                    </div>
+                                    </div> -->
                                     <div class="form-group mb-3">
                                         <label class="fw-bold">Gambar</label>
                                         <input type="file" name="image" class="form-control-file" id="image">
