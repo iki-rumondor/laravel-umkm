@@ -134,6 +134,7 @@
                             <div class="text-center">
                                 <h4 class="text-muted">{{$tk->nama_toko}}</h4>
                                 <p>{!! $tk->user->name !!}</p>
+                                <p>{!!  $tk->user->deskripsi !!}</p>
                             </div>
                         </div>
                         <div class="card-footer">
