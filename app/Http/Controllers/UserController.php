@@ -153,16 +153,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $data = User::find($id);
-        File::delete($data->profile);
-        $product = Product::all()->where('user_id')->first();
-        if ($product) {
-            File::delete($this->gambarProduct . $product->image);
-            $product->delete();
+        $user = User::find($id);
+        File::delete($user->profile);
+        foreach ($user->products as $value) {
+            File::delete($this->gambarProduct . $value->image);
+            $value->delete();
         }
-        $data->shop->delete();
-        $data->delete();
-        if ($data) {
+        $user->shop->delete();
+        $user->delete();
+        if ($user) {
             return redirect()->route('user.index')->with('success', 'Berhasil hapus');
         } else {
             return redirect()->route('user.index')->with('error', 'Gagal hapus');
