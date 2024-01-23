@@ -24,7 +24,7 @@ class HomeController extends Controller
         $slider = Slider::all();
         $umkm = JenisUmkm::all();
         $toko = Shop::with("user")->with("jenis")->get();
-        $product  = Product::with('category', 'user', 'umkm')
+        $product  = Product::with('category', 'user')
             ->join("shops", "shops.user_id", "=", "products.user_id")
             ->take(5)->get();
         return view('frontend.beranda.index', compact('toko', 'app', 'kategori', 'product', 'slider', 'umkm'));
@@ -94,19 +94,17 @@ class HomeController extends Controller
         $app = Setting::all()->first();
         $kategori = Category::all()->take(5);
         $datas = JenisUmkm::all()->where('slug', $id)->first();
-        $data  = Product::with('category', 'user', 'umkm')->where('jenis_umkm_id', $datas->id)->get();
+        $data  = Product::with('category', 'user')->where('jenis_umkm_id', $datas->id)->get();
         $name = $datas->name;
         return view('frontend.umkm.index', compact('data', 'name', 'app', 'kategori'));
     }
 
     public function toko($id)
     {
-        $toko  = User::findOrFail($id);
-
+        $user  = User::findOrFail($id);
         $app = Setting::all()->first();
         $kategori = Category::all()->take(5);
-        $data =  Product::with('category', 'user', 'umkm')->where('user_id', $id)->paginate(10);
-        $name = $toko->name;
-        return view('frontend.toko.index', compact('data', 'name', 'app', 'kategori', 'name'));
+        $data =  Product::with('category', 'user')->where('user_id', $id)->paginate(10);
+        return view('frontend.toko.index', compact('data', 'app', 'kategori', 'user'));
     }
 }

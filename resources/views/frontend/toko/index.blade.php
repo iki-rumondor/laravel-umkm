@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master', ['title' => 'Semua Product'])
 @section('content')
     <section class="product container" style="margin-top: 150px;">
-        <h4>Product Toko {{$name}}</h4>
+        <h4>Product Toko {{$user->shop->nama_toko}}</h4>
         <hr>
         <div class="row justify-content-center">
             @forelse ($data as $x)
@@ -28,9 +28,9 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <p><i class="fa fa-cube"></i><strong class="ms-2">{{ $x->umkm->name }}</strong></p>
+                            <p><i class="fa fa-cube"></i><strong class="ms-2">{{ $user->shop->jenis->name }}</strong></p>
                             <hr>
-                            <p><i class="fa fa-shop"></i><strong class="ms-2">{{ $x->user->name }}</strong></p>
+                            <p><i class="fa fa-shop"></i><strong class="ms-2">{{ $user->shop->nama_toko }}</strong></p>
                         </div>
                     </div>
                 </div>

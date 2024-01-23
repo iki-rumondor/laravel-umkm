@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <p><i class="fa fa-cube"></i><strong class="ms-2">{{ $item->umkm->name }}</strong></p>
+                            <p><i class="fa fa-cube"></i><strong class="ms-2">{{ $item->user->shop->jenis->name }}</strong></p>
                             <hr>
                             <p><i class="fa fa-shop"></i><strong class="ms-2">{{ $item->nama_toko }}</strong></p>
                         </div>

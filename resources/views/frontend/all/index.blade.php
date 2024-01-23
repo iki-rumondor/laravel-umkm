@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <p><i class="fa fa-cube"></i><strong class="ms-2">{{ $x->umkm->name }}</strong></p>
+                            <p><i class="fa fa-cube"></i><strong class="ms-2">{{ $x->user->shop->jenis->name }}</strong></p>
                             <hr>
                             <p><i class="fa fa-shop"></i><strong class="ms-2">{{ $x->user->shop->nama_toko }}</strong></p>
                         </div>
