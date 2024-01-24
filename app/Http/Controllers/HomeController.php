@@ -57,10 +57,6 @@ class HomeController extends Controller
         $data = Product::paginate(10);
         $app = Setting::all()->first();
         $kategori = Category::all()->take(5);
-        // foreach ($data as $key => $value) {
-        //     dd($value);
-        // }
-        // die;
         return view('frontend.all.index', compact('app', 'data', 'kategori'));
     }
 

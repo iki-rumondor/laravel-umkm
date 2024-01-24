@@ -26,7 +26,7 @@
                            {!! $data->description !!}
                         </div>
                         <a href="/" class="btn btn-primary">Kembali</a>
-                        <a href="https://wa.me/{{ $data->phone }}?text=Saya%20tertarik%20dengan%20produk%20{{ $data->name }}" class="btn btn-success">
+                        <a target="_blank" href="https://wa.me/{{ formatPhoneNum($data->user->phone) }}?text=Saya%20tertarik%20dengan%20produk%20{{ $data->name }}" class="btn btn-success">
                             <i class="fab fa-whatsapp"></i> Pesan Via WhatsApp
                         </a>
                     </div>
